@@ -1,0 +1,7 @@
+## AreaperCity
+by_region=group_by(distinct,Region)
+citycount=summarise(by_region,count=n())
+innerjoin=merge(citycount,regionarea,by.x=("Region"),by.y=("Region"))
+innerjoin
+Areapercity=mutate(innerjoin,AreaPerCity=Area/count)
+View(Areapercity)
